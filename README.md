@@ -13,6 +13,6 @@
 ### 创建析龌管家快捷方式
 进入PE系统后，将析龌管家解压到任意**没有应用冰点还原的磁盘**。然后找到“析龌管家.exe”，右键（触屏为长按）创建快捷方式。
 ### 将快捷方式加入启动项
-随后将刚才创建的快捷方式放入**C:\Users\ray\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup**或者**C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp**，两者皆可 ，但**不要都放入**，否则开机会启动两个析龌管家。**此大忌也，不可不察！**
+随后将刚才创建的快捷方式放入**C:\Users\seewo\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup**或者**C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp**，两者皆可 ，但**不要都放入**，否则开机会启动两个析龌管家。**此大忌也，不可不察！**
 ### 重启到原系统
 随后移除PE启动盘和键盘，重启即可。重启后，若析龌管家正常启动，系统托盘出现析龌管家图标，说明开机启动设置成功。
