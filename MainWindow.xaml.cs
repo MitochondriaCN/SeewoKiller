@@ -72,10 +72,10 @@ namespace SeewoKiller
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             //非周一8:40, 9:30, 10:25, 11:30
-            if ((e.SignalTime.Hour == 8 && e.SignalTime.Minute == 40) ||
+            if (((e.SignalTime.Hour == 8 && e.SignalTime.Minute == 40) ||
                 (e.SignalTime.Hour == 9 && e.SignalTime.Minute == 30) ||
                 (e.SignalTime.Hour == 10 && e.SignalTime.Minute == 25) ||
-                (e.SignalTime.Hour == 11 && e.SignalTime.Minute == 30)
+                (e.SignalTime.Hour == 11 && e.SignalTime.Minute == 30))
                 && e.SignalTime.DayOfWeek != DayOfWeek.Monday)
             {
                 Input.Keyboard.Press(System.Windows.Input.Key.LWin);
@@ -85,10 +85,10 @@ namespace SeewoKiller
             }
 
             //周一8:25, 9:15, 10:05, 11:15
-            if ((e.SignalTime.Hour == 8 && e.SignalTime.Minute == 25) ||
+            if (((e.SignalTime.Hour == 8 && e.SignalTime.Minute == 25) ||
                 (e.SignalTime.Hour == 9 && e.SignalTime.Minute == 15) ||
                 (e.SignalTime.Hour == 10 && e.SignalTime.Minute == 05) ||
-                (e.SignalTime.Hour == 11 && e.SignalTime.Minute == 15)
+                (e.SignalTime.Hour == 11 && e.SignalTime.Minute == 15))
                 && e.SignalTime.DayOfWeek == DayOfWeek.Monday)
             {
                 Input.Keyboard.Press(System.Windows.Input.Key.LWin);
