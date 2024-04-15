@@ -97,7 +97,6 @@ namespace SeewoKiller
             using (StreamReader s = new StreamReader(baidureq.GetResponse().GetResponseStream(), Encoding.UTF8))
                 baiduresp = s.ReadToEnd();
             XDocument xd = JsonConvert.DeserializeXNode(baiduresp, "root");
-            File.WriteAllText("debug-baidurespxml.xml", xd.ToString());
             List<string> hotlist = new List<string>();
             //遍历各热点条目，取出放入List
             foreach (var v in xd.Root.Element("data").Element("cards").Descendants("content"))

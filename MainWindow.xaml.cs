@@ -60,7 +60,8 @@ namespace SeewoKiller
             //定时器功能写死，不给用户定制的空间
             timer = new Timer(60000);
             timer.Elapsed += Timer_Elapsed;
-            timer.Start();
+            if (Settings.IsTimerEnabled)
+                timer.Start();
         }
 
         /// <summary>

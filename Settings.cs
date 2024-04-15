@@ -13,6 +13,7 @@ namespace SeewoKiller
     internal static class Settings
     {
         internal static bool IsStartupQueueExecutable { get; private set; }
+        internal static bool IsTimerEnabled { get; private set; }
         internal static List<Action> StartupQueue { get; private set; }
 
         internal static void LoadSettings()
@@ -24,6 +25,7 @@ namespace SeewoKiller
                     XDocument xd = XDocument.Load("settings.xml");
 
                     IsStartupQueueExecutable = bool.Parse(xd.Root.Element("IsStartupQueueExecutable").Value.ToString());
+                    IsTimerEnabled = bool.Parse(xd.Root.Element("IsTimerEnabled").Value.ToString());
 
                     StartupQueue = new List<Action>();
                     foreach (var v in xd.Root.Element("StartupQueue").Descendants())
@@ -67,6 +69,7 @@ namespace SeewoKiller
             XElement root =
                 new XElement("SeewoKillerSettings",
                     new XElement("IsStartupQueueExecutable", "true"),
+                    new XElement("IsTimerEnabled", "true"),
                     new XElement("StartupQueue"));
             xd.Add(root);
             xd.Save("settings.xml");
