@@ -80,7 +80,8 @@ namespace SeewoKiller
             {
                 Input.Keyboard.Press(System.Windows.Input.Key.LWin);
                 Input.Keyboard.Press(System.Windows.Input.Key.D);
-                Input.Keyboard.Reset();
+                Input.Keyboard.Release(System.Windows.Input.Key.LWin);
+                Input.Keyboard.Release(System.Windows.Input.Key.D);
             }
 
             //周一8:25, 9:15, 10:05, 11:15
@@ -92,7 +93,8 @@ namespace SeewoKiller
             {
                 Input.Keyboard.Press(System.Windows.Input.Key.LWin);
                 Input.Keyboard.Press(System.Windows.Input.Key.D);
-                Input.Keyboard.Reset();
+                Input.Keyboard.Release(System.Windows.Input.Key.LWin);
+                Input.Keyboard.Release(System.Windows.Input.Key.D);
             }
         }
 
