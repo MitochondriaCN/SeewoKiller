@@ -2,19 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace SeewoKiller
 {
@@ -23,7 +14,8 @@ namespace SeewoKiller
     /// </summary>
     public partial class MainWindow : Window
     {
-        NotifyIcon nicon;
+        readonly NotifyIcon nicon;
+        readonly Timer timer;
 
         public MainWindow()
         {
@@ -64,6 +56,43 @@ namespace SeewoKiller
                 }
             }
 
+            //定时器
+            //定时器功能写死，不给用户定制的空间
+            timer = new Timer(60000);
+            timer.Elapsed += Timer_Elapsed;
+            timer.Start();
+        }
+
+        /// <summary>
+        /// 计时器方法。该方法在另一线程。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            //非周一8:40, 9:30, 10:25, 11:30
+            if ((e.SignalTime.Hour == 8 && e.SignalTime.Minute == 40) ||
+                (e.SignalTime.Hour == 9 && e.SignalTime.Minute == 30) ||
+                (e.SignalTime.Hour == 10 && e.SignalTime.Minute == 25) ||
+                (e.SignalTime.Hour == 11 && e.SignalTime.Minute == 30)
+                && e.SignalTime.DayOfWeek != DayOfWeek.Monday)
+            {
+                Input.Keyboard.Press(System.Windows.Input.Key.LWin);
+                Input.Keyboard.Press(System.Windows.Input.Key.D);
+                Input.Keyboard.Reset();
+            }
+
+            //周一8:25, 9:15, 10:05, 11:15
+            if ((e.SignalTime.Hour == 8 && e.SignalTime.Minute == 25) ||
+                (e.SignalTime.Hour == 9 && e.SignalTime.Minute == 15) ||
+                (e.SignalTime.Hour == 10 && e.SignalTime.Minute == 05) ||
+                (e.SignalTime.Hour == 11 && e.SignalTime.Minute == 15)
+                && e.SignalTime.DayOfWeek == DayOfWeek.Monday)
+            {
+                Input.Keyboard.Press(System.Windows.Input.Key.LWin);
+                Input.Keyboard.Press(System.Windows.Input.Key.D);
+                Input.Keyboard.Reset();
+            }
         }
 
         private void Nicon_DoubleClick(object sender, EventArgs e)

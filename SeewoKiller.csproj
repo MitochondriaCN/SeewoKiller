@@ -71,6 +71,7 @@
     </ApplicationDefinition>
     <Compile Include="Action.cs" />
     <Compile Include="HotspotAction.cs" />
+    <Compile Include="Input.cs" />
     <Compile Include="ResolutionAction.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SmartDesktopAction.cs" />
