@@ -195,7 +195,7 @@ namespace SeewoKiller
 
         private void btnSmartDesktopConfirm_Click(object sender, RoutedEventArgs e)
         {
-            Settings.StartupQueue.Add(new SmartDesktopAction(ckbIsNewsEnabled.IsChecked.Value));
+            Settings.StartupQueue.Add(new SmartDesktopAction(ckbIsNewsEnabled.IsChecked.Value, ckbCustomWallpaper.IsChecked.Value));
             Settings.SaveStartupQueue();
             RefreshQueueListBox();
             pupSmartDesktop.IsOpen = false;

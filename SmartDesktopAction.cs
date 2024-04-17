@@ -17,27 +17,56 @@ namespace SeewoKiller
     internal class SmartDesktopAction : Action
     {
         internal bool IsNewsEnabled { get; private set; }
+        internal bool IsCustomWallpaperEnabled { get; private set; }
 
         public override string ToString()
         {
-            return "智能桌面，要闻" + (IsNewsEnabled ? "开" : "关");
+            return "智能桌面，要闻" + (IsNewsEnabled ? "开，" : "关，") + (IsCustomWallpaperEnabled ? "" : "不") + "使用wallpapers图片";
         }
 
-        internal SmartDesktopAction(bool isNewsEnabled)
+        internal SmartDesktopAction(bool isNewsEnabled, bool isCustomWallpaperEnabled)
         {
             IsNewsEnabled = isNewsEnabled;
+            IsCustomWallpaperEnabled = isCustomWallpaperEnabled;
         }
 
         internal override bool Execute()
         {
-            //下载图片
-            HttpWebRequest req = WebRequest.Create("https://api.kdcc.cn/") as HttpWebRequest;
-            System.Drawing.Image _im;
-            using (Stream s = req.GetResponse().GetResponseStream())
-                _im = System.Drawing.Image.FromStream(s);
-            _im.Save("wallpaper.jpg");
-            //读取
-            Image i = Image.Load("wallpaper.jpg");
+            Image i;
+            if (!IsCustomWallpaperEnabled)
+            {
+                //下载图片
+                HttpWebRequest req = WebRequest.Create("https://api.kdcc.cn/") as HttpWebRequest;
+                System.Drawing.Image _im;
+                using (Stream s = req.GetResponse().GetResponseStream())
+                    _im = System.Drawing.Image.FromStream(s);
+                _im.Save("wallpaper.jpg");
+                //读取
+                i = Image.Load("wallpaper.jpg");
+            }
+            else
+            {
+                //自定义壁纸
+                if (Directory.Exists("wallpapers\\"))
+                {
+                    string[] wallpapers = Directory.GetFiles("wallpapers\\", "*.jpg");
+                    if (wallpapers.Length > 0)
+                    {
+                        string selectedpath = wallpapers[new Random().Next(wallpapers.Length)];
+                        i = Image.Load(selectedpath);
+                        i.Resize(1920, 1080, ResizeType.HighQualityResample);
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException("于" + Path.GetFullPath("wallpapers\\") + "中未找到有效jpg图片。");
+                    }
+                }
+                else
+                {
+                    Directory.CreateDirectory("wallpapers\\");
+                    throw new FileNotFoundException("于" + Path.GetFullPath("wallpapers\\") + "中未找到有效jpg图片。");
+                }
+            }
 
             //画图
             DeployWallpaper(i);

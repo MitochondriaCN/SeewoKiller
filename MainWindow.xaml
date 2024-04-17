@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeewoKiller"
         mc:Ignorable="d"
-        Title="析龌管家 v1.1.1" Height="445" Width="448" ResizeMode="CanMinimize" Icon="/Resources/icon.ico" Closing="Window_Closing" 
+        Title="析龌管家 v1.2.0" Height="443" Width="483" ResizeMode="CanMinimize" Icon="/Resources/icon.ico" Closing="Window_Closing" 
         StateChanged="Window_StateChanged">
     <Window.Resources>
         <ResourceDictionary>
@@ -101,6 +101,7 @@
                         <Grid Margin="0,15,0,5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -108,6 +109,8 @@
                             </Grid.ColumnDefinitions>
                             <Label Foreground="#ecf0f1">显示要闻</Label>
                             <CheckBox Grid.Column="1" x:Name="ckbIsNewsEnabled" Height="18" HorizontalAlignment="Right" IsChecked="True"/>
+                            <Label Grid.Row="1" Foreground="#ecf0f1">使用wallpapers\*.jpg图片</Label>
+                            <CheckBox Grid.Row="1" Grid.Column="1" x:Name="ckbCustomWallpaper" Height="18" HorizontalAlignment="Right" IsChecked="False"/>
                         </Grid>
                         <Button x:Name="btnSmartDesktopConfirm" HorizontalAlignment="Right" Click="btnSmartDesktopConfirm_Click">添加至开机执行队列</Button>
                         <TextBlock Style="{StaticResource Quote}" Margin="0,20,0,0"
@@ -130,7 +133,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Label Foreground="#ecf0f1">内容</Label>
-                            <TextBox Grid.Column="1" x:Name="txbNotification" VerticalContentAlignment="Center" Height="18" Text="100"/>
+                            <TextBox Grid.Column="1" x:Name="txbNotification" VerticalContentAlignment="Center" Height="18"/>
                         </Grid>
                         <Button x:Name="btnNotificationConfirm" HorizontalAlignment="Right" Click="btnNotificationConfirm_Click">显示</Button>
                         <TextBlock Style="{StaticResource Quote}" Margin="0,20,0,0"

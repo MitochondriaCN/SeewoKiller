@@ -47,7 +47,9 @@ namespace SeewoKiller
                                 StartupQueue.Add(ra);
                                 break;
                             case "SmartDesktopAction":
-                                SmartDesktopAction sda = new SmartDesktopAction(bool.Parse(v.Attribute("IsNewsEnabled").Value));
+                                SmartDesktopAction sda = new SmartDesktopAction(
+                                    bool.Parse(v.Attribute("IsNewsEnabled").Value),
+                                    bool.Parse(v.Attribute("IsCustomWallpaperEnabled").Value));
                                 StartupQueue.Add(sda);
                                 break;
                         }
