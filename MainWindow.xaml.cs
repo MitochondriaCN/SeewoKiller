@@ -67,8 +67,6 @@ namespace SeewoKiller
         /// <summary>
         /// 计时器方法。该方法在另一线程。
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             //非周一8:40, 9:30, 10:25, 11:30
@@ -90,6 +88,17 @@ namespace SeewoKiller
                 (e.SignalTime.Hour == 10 && e.SignalTime.Minute == 05) ||
                 (e.SignalTime.Hour == 11 && e.SignalTime.Minute == 15))
                 && e.SignalTime.DayOfWeek == DayOfWeek.Monday)
+            {
+                Input.Keyboard.Press(System.Windows.Input.Key.LWin);
+                Input.Keyboard.Press(System.Windows.Input.Key.D);
+                Input.Keyboard.Release(System.Windows.Input.Key.LWin);
+                Input.Keyboard.Release(System.Windows.Input.Key.D);
+            }
+
+            //15:45, 16:35, 17:45
+            if ((e.SignalTime.Hour == 15 && e.SignalTime.Minute == 45) ||
+                (e.SignalTime.Hour == 16 && e.SignalTime.Minute == 35) ||
+                (e.SignalTime.Hour == 17 && e.SignalTime.Minute == 45))
             {
                 Input.Keyboard.Press(System.Windows.Input.Key.LWin);
                 Input.Keyboard.Press(System.Windows.Input.Key.D);
