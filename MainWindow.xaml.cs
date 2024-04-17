@@ -206,5 +206,16 @@ namespace SeewoKiller
             System.Windows.Forms.Application.Restart();
             System.Windows.Application.Current.Shutdown();
         }
+
+        private void btnNotification_Click(object sender, RoutedEventArgs e)
+        {
+            pupNotification.IsOpen = true;
+        }
+
+        private void btnNotificationConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            new Notification(txbNotification.Text).Show();
+            pupNotification.IsOpen = false;
+        }
     }
 }

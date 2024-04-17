@@ -72,6 +72,9 @@
     <Compile Include="Action.cs" />
     <Compile Include="HotspotAction.cs" />
     <Compile Include="Input.cs" />
+    <Compile Include="Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ResolutionAction.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SmartDesktopAction.cs" />
@@ -87,6 +90,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Notification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

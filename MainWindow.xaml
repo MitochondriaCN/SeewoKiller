@@ -116,6 +116,29 @@
                     </StackPanel>
                 </Grid>
             </Popup>
+            <Button x:Name="btnNotification" Margin="0,0,0,5" Content="通知" Click="btnNotification_Click"/>
+            <Popup x:Name="pupNotification" PopupAnimation="Fade" PlacementTarget="{Binding ElementName=btnChangeResolution}">
+                <Grid Background="#2c3e50">
+                    <StackPanel Margin="5">
+                        <Label FontSize="20" Foreground="#ecf0f1">通知</Label>
+                        <Grid Margin="0,15,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Foreground="#ecf0f1">内容</Label>
+                            <TextBox Grid.Column="1" x:Name="txbNotification" VerticalContentAlignment="Center" Height="18" Text="100"/>
+                        </Grid>
+                        <Button x:Name="btnNotificationConfirm" HorizontalAlignment="Right" Click="btnNotificationConfirm_Click">显示</Button>
+                        <TextBlock Style="{StaticResource Quote}" Margin="0,20,0,0"
+                               Text="不出户，知天下。" />
+                        <TextBlock Style="{StaticResource Quote}" TextAlignment="Right" Text="——《老子》"/>
+                    </StackPanel>
+                </Grid>
+            </Popup>
         </StackPanel>
         <Grid Grid.Column="1" Margin="10">
             <Grid.RowDefinitions>
